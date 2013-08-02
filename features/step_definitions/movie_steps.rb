@@ -48,7 +48,7 @@ Then /I should see the following movies/ do |movies_table|
   #flunk "Unimplemented"
 end
 
-Then /I should not see the following movies/ do | movies_table|
+Then /I should not see the following movies/ do |movies_table|
   movies_table.hashes.each do |movie|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
@@ -56,4 +56,9 @@ Then /I should not see the following movies/ do | movies_table|
     step %Q{I should not see "#{movie[:title]}"}
   end
   #flunk "Unimplemented"
+end
+
+Then /I should see all the movies/ do
+  rows = page.all('#movies tr').size
+  rows.should == 11
 end
