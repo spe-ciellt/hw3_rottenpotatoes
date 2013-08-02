@@ -37,3 +37,23 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
     step %Q{I #{uncheck}check "ratings_#{rating}"}
   end
 end
+
+Then /I should see the following movies/ do |movies_table|
+  movies_table.hashes.each do |movie|
+    # each returned element will be a hash whose key is the table header.
+    # you should arrange to add that movie to the database here.
+    # movie[:title]
+    step %Q{I should see "#{movie[:title]}"}
+  end
+  #flunk "Unimplemented"
+end
+
+Then /I should not see the following movies/ do | movies_table|
+  movies_table.hashes.each do |movie|
+    # each returned element will be a hash whose key is the table header.
+    # you should arrange to add that movie to the database here.
+    # movie[:title]
+    step %Q{I should not see "#{movie[:title]}"}
+  end
+  #flunk "Unimplemented"
+end
